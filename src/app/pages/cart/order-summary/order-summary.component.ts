@@ -11,7 +11,9 @@ import { CartService } from '../../../services/cart.service';
       <div class="flex flex-col gap-4">
         <div class="flex gap-4">
           <span class="text-lg">Total</span>
-          <span class="text-lg font-bold">{{ '$ ' + total() }}</span>
+          <span class="text-lg font-bold">{{
+            '$ ' + cartService.totalPriceInCart()
+          }}</span>
         </div>
         <app-primary-button label="Proceed to checkout" />
       </div>
@@ -21,14 +23,4 @@ import { CartService } from '../../../services/cart.service';
 })
 export class OrderSummaryComponent {
   cartService = inject(CartService);
-
-  total = computed(() => {
-    let total = 0;
-
-    for (const item of this.cartService.cart()) {
-      total += item.price * item.qtd;
-    }
-
-    return total.toFixed(2);
-  });
 }
