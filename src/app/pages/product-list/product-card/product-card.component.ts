@@ -1,8 +1,6 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { Product } from '../../../models/products.model';
-import { PrimaryButtonComponent } from '../../../components/primary-button/primary-button.component';
 import { CartService } from '../../../services/cart.service';
-import { QuantityInputComponent } from '../../../components/quantity-input/quantity-input.component';
 import { ProductCardButtonComponent } from '../product-card-button/product-card-button.component';
 
 @Component({
