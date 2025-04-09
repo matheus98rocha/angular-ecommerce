@@ -15,8 +15,10 @@ import { Component, input, output } from '@angular/core';
       shadow-md
       hover:opacity-90
       cursor-pointer
+      disabled:bg-blue-300 disabled:cursor-not-allowed disabled:opacity-60
       "
       (click)="buttonClick.emit()"
+      [disabled]="isDisabled()"
     >
       {{ label() }}
     </button>
@@ -25,5 +27,6 @@ import { Component, input, output } from '@angular/core';
 })
 export class PrimaryButtonComponent {
   label = input<string>('');
+  isDisabled = input<boolean>(false);
   buttonClick = output();
 }

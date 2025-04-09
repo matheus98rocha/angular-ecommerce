@@ -23,6 +23,7 @@ import { QuantityInputComponent } from '../../../components/quantity-input/quant
           (handleIncrement)="cartService.incrementItem(item())"
           (handleDecrement)="cartService.decrementItem(item())"
           [qtd]="item().qtd"
+          [limitValue]="item().stock"
         />
         <app-primary-button
           label="Remove"

@@ -1,4 +1,4 @@
-import { Component, input, Input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-quantity-input',
@@ -16,16 +16,19 @@ import { Component, input, Input, output } from '@angular/core';
       <p>{{ qtd() }}</p>
       <button
         (click)="handleIncrement.emit()"
-        class="rounded-r-lg px-4 py-2 text-slate-500 hover:bg-slate-200"
+        class="rounded-r-lg px-4 py-2 text-slate-500 hover:bg-slate-200
+               disabled:text-slate-300 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+        [disabled]="limitValue() === qtd()"
       >
         +
       </button>
     </div>
   `,
-  styles: ``,
+  styles: [],
 })
 export class QuantityInputComponent {
   qtd = input.required<number>();
+  limitValue = input.required<number>();
 
   handleIncrement = output();
   handleDecrement = output();

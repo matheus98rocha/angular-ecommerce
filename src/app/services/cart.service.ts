@@ -1,5 +1,6 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { Product } from '../models/products.model';
+import { isObjectInArray } from '../utils/isObjectInArray';
 
 @Injectable({
   providedIn: 'root',
@@ -57,9 +58,16 @@ export class CartService {
     this.updateItemQuantity(product.id, -1);
   }
 
-  // Mudar isso para remover um item em produtos com mais de um item
   removeFromCart(product: Product) {
     this.cart.set(this.cart().filter((p) => p.id !== product.id));
+  }
+
+  findProductInCart(productId: number): Product | null {
+    const foundProduct = this.cart().find(
+      (productInCart) => productInCart.id === productId
+    );
+    if (!foundProduct) return null;
+    return foundProduct;
   }
   constructor() {}
 }
